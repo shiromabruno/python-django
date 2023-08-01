@@ -19,9 +19,11 @@ def my_var():
     variavel_lista = [42]
     print(f"{variavel_lista} has a type {type(variavel_lista)}")
 
+    #thisdict =	{"brand": "Ford", "model": "Mustang", "year": 1964}
     variavel_dict = {42:42}
     print(f"{variavel_dict} has a type {type(variavel_dict)}")
 
+    #mytuple = ("apple", "banana", "cherry")
     variavel_tuple = (42,)
     print(f"{variavel_tuple} has a type {type(variavel_tuple)}")
 
