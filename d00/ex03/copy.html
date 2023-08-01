@@ -11,15 +11,47 @@
 
 <body>
 
-    <div>
-        <div>
+    <ul>
+        <li class="html5">
             <h2>Frontend</h2>
-        </div>
-        <div>
-            <h2>Backend</h2>
-        </div>
-    </div>
+            <p data-value="80"></p>
+            <h3>HTML5</h3>
+            <progress value="80" max="100">90%</progress>
+            
+            <p data-value="60"></p>
+            <h3>CSS3</h3>
+            <progress value="60" max="100">90%</progress>
+            
+            <p data-value="50"></p>
+            <h3>jQuery</h3>
+            <progress value="50" max="100">90%</progress>
+            
+        </li>
 
+        <li class="css3">
+            <h2>Backend</h2>
+            <p data-value="75"></p>
+            <h3>Python</h3>
+            <progress value="75" max="100">85%</progress>
+            
+            <p data-value="65"></p>
+            <h3>PHP</h3>
+            <progress value="65" max="100">85%</progress>
+            
+            <p data-value="35"></p>
+            <h3>Node.js</h3>
+            <progress value="35" max="100">85%</progress>
+            
+        </li>
+        
+    </ul>
+
+    <script>
+        const elementos = document.querySelectorAll("p");
+        elementos.forEach((el) => {
+          el.style.marginRight = `${100 - Number(el.dataset.value)}%`
+        });
+      </script>
     
 </body>
 
