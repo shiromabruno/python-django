@@ -1,66 +1,42 @@
 
 import sys
 
-def main(lista_city_state):
-    
-    states = {
-        "Oregon" : "OR",
-        "Alabama" : "AL",
-        "New Jersey": "NJ",
-        "Colorado" : "CO"
-   }
+def main():
 
-    capital_cities = {
-        "OR": "Salem",
-        "AL": "Montgomery",
-        "NJ": "Trenton",
-        "CO": "Denver"
-    }
+    d = {
+    'Hendrix': '1942',
+    'Allman': '1946',
+    'King': '1925',
+    'Clapton': '1945',
+    'Johnson': '1911',
+    'Berry': '1926',
+    'Vaughan': '1954',
+    'Cooder': '1947',
+    'Page': '1944',
+    'Richards': '1943',
+    'Hammett': '1962',
+    'Cobain': '1967',
+    'Garcia': '1942',
+    'Beck': '1944',
+    'Santana': '1947',
+    'Ramone': '1948',
+    'White': '1975',
+    'Frusciante': '1970',
+    'Thompson': '1949',
+    'Burton': '1939',
+}
 
-    # states_lower = {}
-    # for key, value in states.items():
-    #     states_lower[key.lower()] = value.lower()
+    #sort_dictionary = sorted(d.items()) # faz sort pelo KEY  e volta o DICTIONARY COMPLETO
+    #sort_dictionary = sorted(d.values()) # faz sort pelo VALUES apenas e volta o VALUES 
 
-    # print(states_lower)
+    # o LAMBDA: cada musico sera comparado com outro musico primeiramente pelo ANO [0] e depois pelo NOME [1]
+    sort_dictionary = sorted(d.items(), key=lambda musico: (musico[1], musico[0]))
+    #print(sort_dictionary)
 
-    for listaitem in lista_city_state:
-        estado_sigla = "nenhum"
-        not_found = True
-        if listaitem.title() in states:
-            capital_sigla = states[listaitem.title()]
-            if capital_sigla in capital_cities:
-                print (f'{capital_cities[capital_sigla]} is the capital of {listaitem.title()}')
-                not_found = False
-        else:
-            for key, value in capital_cities.items():
-                if value == listaitem.title(): 
-                    estado_sigla = key
-            for key, value in states.items():
-                if value == estado_sigla:
-                    print(f'{listaitem.title()} is the capital of {key}')
-                    estado_sigla = "nenhum"
-                    not_found = False
-        if not_found:
-                print(f'{listaitem} is neither a capital city nor a state')
+    for musician in sort_dictionary: # LIST de tupla
+        print(musician[0]) #printa primeiro elemento da tupla
+
     return
-        
 
 if __name__ == '__main__':
-
-    if len(sys.argv) != 2:
-        sys.exit()
-
-    arg1 = sys.argv[1]
-    
-    lista_entrada = arg1.split(",")
-    lista_final_com_strip=[]
-
-    for nome in lista_entrada:
-        if nome.strip() != "":
-            lista_final_com_strip.append(nome.strip())
-
-    #print(lista_entrada)
-    #print(lista_final_com_strip)
-
-    #if isinstance(arg1, str):
-    main(lista_final_com_strip)
+    main()

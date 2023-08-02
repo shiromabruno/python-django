@@ -24,15 +24,15 @@ def main(lista_city_state):
     # print(states_lower)
 
     for listaitem in lista_city_state:
-        estado_sigla = "nenhum"
-        not_found = True
-        if listaitem.title() in states:
+        estado_sigla = "nenhum" # variavel auxiliar que armazena ESTADO SIGLA, caso a listaitem eh uma CIDADE
+        not_found = True #FLAG que nao achou, voltar ERRO
+        if listaitem.title() in states: # IF de caso o listaitem eh um ESTADO
             capital_sigla = states[listaitem.title()]
             if capital_sigla in capital_cities:
                 print (f'{capital_cities[capital_sigla]} is the capital of {listaitem.title()}')
                 not_found = False
         else:
-            for key, value in capital_cities.items():
+            for key, value in capital_cities.items(): # ELSE de caso o listaitem eh uma CIDADE
                 if value == listaitem.title(): 
                     estado_sigla = key
             for key, value in states.items():
@@ -40,7 +40,7 @@ def main(lista_city_state):
                     print(f'{listaitem.title()} is the capital of {key}')
                     estado_sigla = "nenhum"
                     not_found = False
-        if not_found:
+        if not_found: # se entrou aqui, entao nao achou.
                 print(f'{listaitem} is neither a capital city nor a state')
     return
         
