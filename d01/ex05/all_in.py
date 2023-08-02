@@ -1,7 +1,7 @@
 
 import sys
 
-def main(find_state):
+def main(lista_city_state):
     
     states = {
         "Oregon" : "OR",
@@ -17,13 +17,6 @@ def main(find_state):
         "CO": "Denver"
     }
 
-    if find_state in states:
-        capital_sigla = states[find_state]
-        if capital_sigla in capital_cities:
-            print (capital_cities[capital_sigla])
-            return
-        
-    print ("Unknown state")
     return
         
 
@@ -32,5 +25,16 @@ if __name__ == '__main__':
     if len(sys.argv) != 2:
         sys.exit()
 
-arg1 = sys.argv[1]
-main(arg1)
+    arg1 = sys.argv[1]
+    
+    lista_entrada = arg1.split(",")
+    lista_final_com_strip=[]
+
+    for nome in lista_entrada:
+        if nome.strip() != "":
+            lista_final_com_strip.append(nome.strip())
+
+    print(lista_entrada)
+    print(lista_final_com_strip)
+    if isinstance(arg1, str):
+        main(arg1)

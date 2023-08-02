@@ -1,7 +1,7 @@
 
 import sys
 
-def main(find_state):
+def main(find_city):
     
     states = {
         "Oregon" : "OR",
@@ -17,13 +17,17 @@ def main(find_state):
         "CO": "Denver"
     }
 
-    if find_state in states:
-        capital_sigla = states[find_state]
-        if capital_sigla in capital_cities:
-            print (capital_cities[capital_sigla])
+    estado_sigla = "nenhum"
+    for key, value in capital_cities.items():
+        if value == find_city:
+            estado_sigla = key
+
+    for key, value in states.items():
+        if value == estado_sigla:
+            print(key)
             return
         
-    print ("Unknown state")
+    print ("Unknown capital city")
     return
         
 
