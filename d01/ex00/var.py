@@ -27,6 +27,7 @@ def my_var():
     variavel_tuple = (42,)
     print(f"{variavel_tuple} has a type {type(variavel_tuple)}")
 
+    #myset = {"apple", "banana", "cherry"}
     variavel_set = set()
     print(f"{variavel_set} has a type {type(variavel_set)}")
 
