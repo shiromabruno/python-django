@@ -5,7 +5,7 @@ import settings
 
 # myCV.template
 def main(template_file):    
-    
+
     f = open(template_file, "r")
 
     # "".join(input_file.readlines()) reads all the lines from the file.
@@ -29,14 +29,13 @@ def main(template_file):
     #print result #  ----> ['TP', 'TP']
     #result2=pattern.findall('TP is most popular tutorials site of India')
     #print result2 #  ----> ['TP']
-    regex = re.compile(".*\.template")
+    regex = re.compile("(\.template)")
 
 
     template_file = "".join([template_file[0:regex.search(template_file).start()], ".html"]) # criou como myCV.html
     #template_file = "".join([template_file.split('.')[0], ".html"]) # criou como myCV.html
     #template_file = "".join([template_file[0], ".html"]) # criou como m.html
 
-    print(template_file)
     f = open(template_file, "w")
     f.write(file)
     f.close()
@@ -56,5 +55,8 @@ if __name__ == '__main__':
     if not os.path.isfile(template_file):
         print("Arquivo com extensao template nao existe")
         sys.exit(1)
-        
-    main(template_file)
+    
+    try:
+        main(template_file)
+    except Exception as ex:
+        print (ex)

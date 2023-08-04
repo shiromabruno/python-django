@@ -10,6 +10,7 @@ class CoffeeMachine:
     def repair(self):
         self.flag_quebrado = False
         self.drinks_feitos = 0
+        print("Coffe machine is fully repaired! Now it is working!")
     
     def serve(self, objeto_hot_beverage):
 
