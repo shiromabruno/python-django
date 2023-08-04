@@ -32,13 +32,11 @@ python -m pip install --log $LOG_FILE --force-reinstall git+$PATH_PY_URL
 
 # Check if the 'path.py' library has been installed properly
 if [ -f "$VENE_DIR/lib/python3.*/site-packages/path.py" ]; then
-    echo "path.py has been installed successfully."
-
-    # Run the my Python program using the Python interpreter from the activated virtual environment.
-    # The program 'my_program.py' should be present in the current working directory.
+    echo "path.py has been installed successfully. Running my_program.py..."
     python my_program.py
 else
     echo "Failed to install path.py."
 fi
 
+# bash my_script.sh
 # ./my_script.sh , se der permission denied, rodar: chmod u+x my_script.sh
