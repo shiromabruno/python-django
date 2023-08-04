@@ -6,11 +6,14 @@ class Text(str):
 
 
 class Elem:
+
+    #teste
     class ValidationError(Exception):
         def __init__(self) -> None:
-            super().__init__("incorrect behaviour.")
+            super().__init__("Error durante a execucao!")
 
     def __init__(self, tag: str = 'div', attr: dict = {}, content=None, tag_type: str = 'double'):
+        #teste
         self.tag = tag
         self.attr = attr
         self.content = []
@@ -25,7 +28,10 @@ class Elem:
         self.tag_type = tag_type
 
     def __str__(self):
+        #teste
         attr = self.__make_attr()
+
+
         result = "<{tag}{attr}".format(tag=self.tag, attr=attr)
         if self.tag_type == 'double':
             result += ">{content}</{tag}>".format(
@@ -36,17 +42,36 @@ class Elem:
 
     def __make_attr(self):
         result = ''
+
+        #  example = {
+        #   "href": "https://www.example.com",
+        #   "target": "_blank",
+        #   "title": "Visit Site" 
+        #   }
+        # self.attr.items() ---> [('href', 'https://www.example.com'), ('target', '_blank'), ('title', 'Visit Site')]
         for pair in sorted(self.attr.items()):
             result += ' ' + str(pair[0]) + '="' + str(pair[1]) + '"'
         return result
+        # href="https://www.example.com" target="_blank" title="Visit Site"
 
     def __make_content(self):
+        
+        # content eh uma lista de ELEM ou lista de TEXT
         if len(self.content) == 0:
             return ""
         result = "\n"
         for elem in self.content:
+            #teste
             if (len(str(elem)) != 0):
+                # Elem(content=[Text('foo'), Text('bar'), Elem()])
+                # vai printar em sequencia:
+                # foo
+                # foo
+                # bar
+                # <div></div>
+                # OU '<div>\n  foo\n  bar\n \<div></div>\n</div>'
                 result += "{elem}\n".format(elem=elem)
+        #splitlines(True) txt = "Thank you for the music\nWelcome to the jungle" ----> ['Thank you for the music\n', 'Welcome to the jungle'] 
         result = "  ".join(line for line in result.splitlines(True))
         if len(result.strip()) == 0:
             return ''
@@ -69,6 +94,7 @@ class Elem:
 
 
 def test():
+    #teste
     html = Elem('html', content=[
                 Elem('head', content=
                      Elem('title', content=Text("Hello ground!"))),
@@ -79,4 +105,5 @@ def test():
 
 
 if __name__ == '__main__':
+    #teste
     test()
