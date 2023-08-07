@@ -17,6 +17,7 @@ def main(latitude, longitude, dowjones):
 if __name__ == '__main__':
 
     # python3 geohashing.py -23.5489 -46.6388 10458.68
+    # python geohashing.py -23.5489 -46.6388 10458.68
 
     if len(sys.argv) != 4:
         print("Atencao, necessario 4 argumentos NESSA ORDEM: geohashing.py + latitude + longitude + dowopening")
