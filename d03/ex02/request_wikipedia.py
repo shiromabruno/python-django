@@ -32,8 +32,15 @@ def main(page: str):
         return
 
     # Exemplo de Wiki markup text: {Short description|Viennoiserie sweet roll}}
-    return (dewiki.from_string(data["parse"]["wikitext"]["*"])) # Retorna sem Wiki markup text
-
+    arquivo_content = dewiki.from_string(data["parse"]["wikitext"]["*"]) # Retorna sem Wiki markup text
+    # print(arquivo_content)
+    
+    try:
+        f = open("{}.wiki".format(sys.argv[1].replace(" ", "_")), "w") # nome do arquivo como o de busca
+        f.write(arquivo_content)
+        f.close
+    except Exception as e:
+        print(f'Erro na criacao do arquivo .wiki: {e}')
 
 if __name__ == '__main__':
 
@@ -48,10 +55,3 @@ if __name__ == '__main__':
     query_busca = sys.argv[1]
 
     retorno_wikipedia = main(query_busca)
-
-    try:
-        f = open("{}.wiki".format(sys.argv[1]), "w")
-        f.write(retorno_wikipedia)
-        f.close
-    except Exception as e:
-        print(f'Erro na criacao do arquivo .wiki: {e}')
