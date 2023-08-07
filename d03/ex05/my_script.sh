@@ -12,6 +12,7 @@ $PYTHON_PATH -m venv $DIRETORIO_AMBIENTE
 # Activate the virtual environment, making it the current Python environment
 source $DIRETORIO_AMBIENTE/bin/activate # aqui tera o activate.csh, activate.fish, arquivos pip3, pip3.8 etc...
 
+
 # Check the version of pip installed in the virtual environment
 python -m pip --version
 
@@ -22,5 +23,32 @@ python -m pip install --force-reinstall -r requirement.txt
 
 echo "requirement.txt instalada com sucesso"
 
-# bash my_script.sh
-# ./my_script.sh , se der permission denied, rodar: chmod u+x my_script.sh
+# PASSOS:
+# 1- bash my_script.sh
+# 2- executar comando: source django_venv/bin/activate
+# 3- iniciando um project
+#   django-admin startproject Django
+# 4- iniciando um app
+#   django-admin startapp helloworld
+# 5- Alterar o url.py da pasta ex05/Django/Django path('helloworld/', include('helloworld.url')), + from django.urls.conf import include)
+# 6- Criar o url.py da pasta ex05/Django/helloworld (ver abaixo no 6.1)
+# 7- Alterar o views.py da pasta ex05/Django/helloworld (ver abaixo o 7.1)
+# 8- Rodar o python3 manage.py runserver
+# 9- Vai ter a info Starting development server at http://127.0.0.1:8000/
+# 10- Jogar no navegador http://127.0.0.1:8000/helloworld/
+# 11- depois do teste, rodar: deactivate
+
+# 6.1) url.py
+# from django.urls import path
+# from . import views
+# urlpatterns = [
+#     path('', views.index, name='index'),
+# ]
+
+# 7.1)
+# from django.shortcuts import render
+# from django.http import HttpResponse
+#
+# def index(request):
+#     return HttpResponse("Hello World!")
+
