@@ -1,56 +1,57 @@
-import sys, requests, json, dewiki
+import sys, requests
+from bs4 import BeautifulSoup
 
-def main(page: str):
- 
-    wikipedia_url = "https://en.wikipedia.org/w/api.php"
-    wikipedia_params = {
-        "action": "parse", # Parses content and returns parser output. https://www.mediawiki.org/wiki/API:Main_module
-        "page": query_busca,
-        "prop": "wikitext", # Wikitext with HTML tags removed and entities replaced. https://www.mediawiki.org/wiki/API:Properties
-        "format": "json",
-        "redirects": "true" # Returns all redirects to the given pages. 
-    }
+class roads_to_philosophy:
+    def __init__(self):
+        self.link_anterior = []
 
-    try:
-        retorno_wikipedia = requests.get(url=wikipedia_url, params=wikipedia_params)
-        # print(retorno_wikipedia) # --> <Response [200]>
-    except Exception as e:
-        print(f'Erro na chamada da API Wikipedia: {e}. Retorno da API Wikipedia: {retorno_wikipedia}')
-        return
-    
-    try:
-        data = json.loads(retorno_wikipedia.text)
-        #print(data)
-    except Exception as e:
-        print(f'Erro no json.loads: {e}. Retorno da API Wikipedia: {retorno_wikipedia}')
-        return
-    
-    if data.get("error") is not None:
-        # exemplo de erro pra cair aqui: The page you specified doesn't exist.
-        # exemplo do 'data': {'error': {'code': 'missingtitle', 'info': "The page you specified doesn't exist.", '*': 'See https://en.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt; for notice of API deprecations and breaking changes.'}, 'servedby': 'mw1392'}
-        print(f'Retorno da API Wikipedia com Erro: {data["error"]["info"]}')
-        return
+    def search_wikipeadia(self, query_busca: str): # /wiki/ + query_busca
 
-    # Exemplo de Wiki markup text: {Short description|Viennoiserie sweet roll}}
-    arquivo_content = dewiki.from_string(data["parse"]["wikitext"]["*"]) # Retorna sem Wiki markup text
-    print(arquivo_content)
-    try:
-        f = open("{}.wiki".format(sys.argv[1].replace(" ", "_")), "w")
-        f.write(arquivo_content)
-        f.close
-    except Exception as e:
-        print(f'Erro na criacao do arquivo .wiki: {e}')
+        URL = 'https://en.wikipedia.org{page}'.format(page=query_busca) # example: https://pt.wikipedia.org/wiki/Python
+
+        try:
+            retorno_wiki = requests.get(url=URL)
+            retorno_wiki.raise_for_status()
+        except Exception as e:
+            if (retorno_wiki.status_code == 404):
+                return print("It's a dead end !")
+            return print(e)
+
+        soup = BeautifulSoup(retorno_wiki.text, 'html.parser') # example: <a class="vector-toc-link" href="#Name"><div class="vector-toc-text"><span class="vector-toc-numb">1</span>Name</div>... etc
+        title = soup.find(id='firstHeading').text # example: <h1 class="firstHeading mw-first-heading" id="firstHeading"><span class="mw-page-title-main">Pain au chocolat</span></h1>
+
+        if title in self.link_anterior: # example do Chocolatine: Pain au chocolat, Canada, North America...
+            return print("It leads to an infinite loop !")
+        
+        print(title) # example do Chocolatine: Pain au chocolat, Canada, North America...
+        self.link_anterior.append(title) # adiciona os titles acima...
+
+        if title == 'Philosophy':
+            return print("{} roads from {} to Philosophy".format(len(self.link_anterior), self.link_anterior[0] if len(self.link_anterior) > 0 else 'Philosophy')) 
+        
+        content = soup.find(id='mw-content-text') # example: <div class="mw-body-content mw-content-ltr" dir="ltr" id="mw-content-text" lang="en"><div class="mw-parser-output"><div class="shortdescription nomobile noexcerpt noprint searchaux" style="display:none">Viennoiserie sweet roll</div>
+        allLinks = content.select('p > a') # <a href="/wiki/Canada" title="Canada">Canada</a>, <a href="/wiki/Belgium" title="Belgium">Belgium</a>... etc
+
+        for link in allLinks: # link = <a href="/wiki/Canada" title="Canada">Canada</a>
+            # link.get('href') = /wiki/Canada
+            if link.get('href') is not None and link['href'].startswith('/wiki/')\
+                    and not link['href'].startswith('/wiki/Wikipedia:') and not link['href'].startswith('/wiki/Help:'):
+                return self.search_wikipeadia(link['href']) # /wiki/Canada
+        
+        return print("It leads to a dead end !.")
+
+def main():
+
+    wiki = roads_to_philosophy() # cria uma instancia com uma lista 'link_anterior' com as buscas anteiores (usado no loop)
+
+    if (len(sys.argv) == 2):
+        wiki.search_wikipeadia('/wiki/'+sys.argv[1]) # example: https://pt.wikipedia.org/wiki/Python
+    else:
+        print("Necessario 2 argumentos apenas: roads_to_philosophy.py e o string de busca no Wikipedia")
+
 
 if __name__ == '__main__':
-
+    
     # pip install -r ./requirement.txt
-    # Python module to remove wiki markup text. Whenever you have data that contains wiki markup and want to convert it into human readable plain text, you can use dewiki to do so.
-    # Exemplo de Wiki markup text: {Short description|Viennoiserie sweet roll}}
 
-    if len(sys.argv) != 2:
-        print("Necessario 2 argumentos apenas: roads_to_philosophy.py e o string de busca no Wikipedia")
-        sys.exit(1)
-
-    query_busca = sys.argv[1]
-
-    retorno_wikipedia = main(query_busca)
+    main()
