@@ -14,13 +14,13 @@ PATH_PY_URL="https://github.com/jaraco/path.git"
 MY_PROGRAM="my_program.py"
 
 # Set the name of the virtual environment directory
-VENE_DIR="local_lib" # dentro do ex01, ira criar a pasta local_lib
+DIRETORIO_AMBIENTE="local_lib" # dentro do ex01, ira criar a pasta local_lib
 
 # Create a virtual environment using the specified Python executable
-$PYTHON_PATH -m venv $VENE_DIR
+$PYTHON_PATH -m venv $DIRETORIO_AMBIENTE
 
 # Activate the virtual environment, making it the current Python environment
-source $VENE_DIR/bin/activate # aqui tera o activate.csh, activate.fish, arquivos pip3, pip3.8 etc...
+source $DIRETORIO_AMBIENTE/bin/activate # aqui tera o activate.csh, activate.fish, arquivos pip3, pip3.8 etc...
 
 # Check the version of pip installed in the virtual environment
 python -m pip --version
@@ -30,13 +30,16 @@ python -m pip --version
 # The '--force-reinstall' flag is used to ensure the package is installed, even if it's already installed.
 python -m pip install --log $LOG_FILE --force-reinstall git+$PATH_PY_URL
 
-# Check if the 'path.py' library has been installed properly
-if [ -f "$VENE_DIR/lib/python3.*/site-packages/path.py" ]; then
-    echo "path.py has been installed successfully. Running my_program.py..."
-    python my_program.py
-else
-    echo "Failed to install path.py."
-fi
+echo "path.py has been installed successfully. Running my_program.py..."
+python my_program.py
+
+# Check if the 'path.py' library has been installed properly --> NAO FUNCIONOU... NAO TEM O PATH.PY
+# if [ -f "$DIRETORIO_AMBIENTE/lib/python3.*/site-packages/path.py" ]; then
+#     echo "path.py has been installed successfully. Running my_program.py..."
+#     python my_program.py
+# else
+#     echo "Failed to install path.py."
+# fi
 
 # bash my_script.sh
 # ./my_script.sh , se der permission denied, rodar: chmod u+x my_script.sh

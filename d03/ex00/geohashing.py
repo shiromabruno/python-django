@@ -9,7 +9,7 @@ def main(latitude, longitude, dowjones):
 
     try:
         coordenada_final = antigravity.geohash(latitude, longitude, dowjones) # aparece -23.308792 -46.803754
-        print(coordenada_final) # None
+        # print(coordenada_final) # None
     except  Exception as ex:
         print(f'Error no antigravity.geohash: {ex}')
     
