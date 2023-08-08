@@ -29,3 +29,9 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 ################################################################################################################
     EX01
 ################################################################################################################
+
+django-admin startapp ex01
+criar pasta static com style1.css e style2.css no ex01
+no settings colocar: STATIC_ROOT = 'static'
+python manage.py collectstatic  ---> cria uma pasta static global para o projeto todo usar (raiz do d04). Pega como base o static que esta no ex01
+python3 manage.py runserver --> rodar o server

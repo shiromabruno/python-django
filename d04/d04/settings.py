@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
+STATIC_ROOT = 'static'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ex00'
+    'ex00',
     'ex01'
 ]
 
