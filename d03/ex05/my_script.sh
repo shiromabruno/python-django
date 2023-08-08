@@ -28,12 +28,12 @@ echo "requirement.txt instalada com sucesso"
 # 2- executar comando: source django_venv/bin/activate
 # 3- iniciando um project
 #   django-admin startproject Django
-# 4- iniciando um app
+# 4- dar um cd Django, e depos inicar um app
 #   django-admin startapp helloworld
 # 5- Alterar o url.py da pasta ex05/Django/Django path('helloworld/', include('helloworld.url')), + from django.urls.conf import include)
 # 6- Criar o url.py da pasta ex05/Django/helloworld (ver abaixo no 6.1)
 # 7- Alterar o views.py da pasta ex05/Django/helloworld (ver abaixo o 7.1)
-# 8- Rodar o python3 manage.py runserver
+# 8- Entrar no cd Django, Rodar o python3 manage.py runserver
 # 9- Vai ter a info Starting development server at http://127.0.0.1:8000/
 # 10- Jogar no navegador http://127.0.0.1:8000/helloworld/
 # 11- depois do teste, rodar: deactivate
