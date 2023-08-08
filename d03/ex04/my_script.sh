@@ -1,3 +1,4 @@
+#!/bin/sh
 # Keep in mind that this script assumes you have a valid Python interpreter (/usr/bin/python3), pip package manager, and Git installed on your system. The script creates a virtual environment, activates it, installs the path package from the specified Git repository, and then runs a small Python program named my_program.py. The virtual environment allows you to have isolated Python environments and avoid conflicts between different projects and their dependencies.
 
 # Set the path to the Python executable (Python 3 in this case)
