@@ -1,0 +1,31 @@
+################################################################################################################
+    EX00
+################################################################################################################
+
+Realizar o comando na raiz do d04
+PYTHON_PATH="/usr/bin/python3"
+DIRETORIO_AMBIENTE="django_venv"
+$PYTHON_PATH -m venv $DIRETORIO_AMBIENTE
+source $DIRETORIO_AMBIENTE/bin/activate
+python -m pip --version
+python -m pip install --force-reinstall -r requirements.txt
+django-admin startproject d04 . (precisa do ponto pra ele nao criar duas pastas d04) (ira criar o d04 project django)
+django-admin startapp ex00  (a pasta nao pode ter sido criada antes)
+no settings.txt no d04 project django, as seguintes coisas no #anexo1
+dentro do d04, Rodar o python3 manage.py runserver OU SE DER ERRO, RODAR: python manage.py collectstatic
+Vai ter a info Starting development server at http://127.0.0.1:8000/
+Devera aparecer normalmente a pagina no http://127.0.0.1:8000/ex00
+deactivate
+
+anexo1: 
+# acrescentar o 'ex00' no INSTALLED_APPS, como abaixo. (Manter os outros installed apps)
+INSTALLED_APPS = [
+    ...
+    'ex00'
+]
+# colocar a linha abaixo:
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
+
+################################################################################################################
+    EX01
+################################################################################################################

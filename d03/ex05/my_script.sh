@@ -27,7 +27,7 @@ echo "requirement.txt instalada com sucesso"
 # 1- bash my_script.sh
 # 2- executar comando: source django_venv/bin/activate
 # 3- iniciando um project
-#   django-admin startproject Django
+#   django-admin startproject Django .  (tem esse ponto no final)
 # 4- dar um cd Django, e depos inicar um app
 #   django-admin startapp helloworld
 # 5- Alterar o url.py da pasta ex05/Django/Django path('helloworld/', include('helloworld.url')), + from django.urls.conf import include)
