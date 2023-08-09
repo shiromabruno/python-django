@@ -2,6 +2,9 @@
     EX00
 ################################################################################################################
 
+Referencia no HTML: https://docs.djangoproject.com/en/4.2/ref/templates/language/
+Referencia Django Geral: https://realpython.com/django-templates-tags-filters/
+
 Realizar o comando na raiz do d04
 PYTHON_PATH="/usr/bin/python3"
 DIRETORIO_AMBIENTE="django_venv"
@@ -30,6 +33,9 @@ SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
     EX01
 ################################################################################################################
 
+Referencia no HTML: https://docs.djangoproject.com/en/4.2/ref/templates/language/
+Referencia Django Geral: https://realpython.com/django-templates-tags-filters/
+
 django-admin startapp ex01
 criar pasta static com style1.css e style2.css no ex01
 no settings colocar: STATIC_ROOT = 'static'
@@ -41,4 +47,11 @@ fazer os testes: http://127.0.0.1:8000/ex01/django , /templates e /display
     EX02
 ################################################################################################################
 
+Referencia no HTML: https://docs.djangoproject.com/en/4.2/ref/templates/language/
+Referencia Django Geral: https://realpython.com/django-templates-tags-filters/
+
 django-admin startapp ex02
+
+################################################################################################################
+    EX03
+################################################################################################################

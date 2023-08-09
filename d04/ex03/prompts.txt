@@ -1,0 +1,9 @@
+<!-- 
+Create a HTML page in Django with the following feature: 
+- The page must has a 4 columns x 51 lines table
+- Each table column will have a different color: noir, rouge, bleu and vert
+- Table must has Height: 40 pixels, 
+- Table must has Width: 80 pixels, 
+- Table must has Background color: a color shade that matches the column
+-->
+

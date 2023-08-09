@@ -1,0 +1,12 @@
+<!-- 
+Create a form class with the following feature: 
+- The class must use Form class provided by Django
+-->
+
+<!-- 
+Create a html page in Django with the following feature: 
+- The page must has text field.
+- The page must has submit button.
+- The page must has tag <p> empty
+- When submit button is clicked, list the input and its timestamp at the end of <p>
+-->

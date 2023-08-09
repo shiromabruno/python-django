@@ -1,0 +1,9 @@
+<!-- 
+Create a html page with the following feature: 
+- Gather all the informations about the whole Markdown syntax.
+- The page must be valid HTML5.
+- The page must be valid CSS3.
+- The page must be responsive.
+- The page must has a title as "Ex00: Markdown Cheatsheet.". -->
+
+

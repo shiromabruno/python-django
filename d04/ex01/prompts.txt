@@ -1,0 +1,22 @@
+<!-- 
+Create a html page in Django with the following feature: 
+- Gather all the informations about the whole Markdown syntax.
+- The page must be valid HTML5.
+- The page must be valid CSS3.
+- The page must be responsive.
+- The page must has content block in the body
+- The page must has style block in the head
+- The page must has a title block in the head
+-->
+
+<!-- 
+Create a css file with the following feature: 
+- Define the text color as blue
+-->
+
+<!-- 
+Create a css file with the following feature: 
+- Define the text color as red
+-->
+
+
