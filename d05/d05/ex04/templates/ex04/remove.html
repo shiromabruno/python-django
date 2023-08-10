@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Deletar Recurso</title>
+
+    <!-- Gera pra mim um css bonito e moderno-->
+
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #eeeeee;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      form {
+        width: 500px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+        margin-bottom: 20px;
+      }
+
+      input[type=submit] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+        background-color: #eeeeee;
+        cursor: pointer;
+      }
+
+      input[type=submit]:hover {
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Deletar Recurso</h1>
+    <form action={% url 'remove' %} method="post">
+      {% csrf_token %}
+      <label for="movies">Selecione o recurso a ser deletado:</label>
+
+      {% if movies  %}
+      <select name="episode_nb">
+        {% for movie in movies %}
+        <option value="{{ movie.1 }}">{{ movie.0 }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" value="Deletar" />
+      {% else %}
+      <p>Nenhum recurso encontrado</p>
+      {% endif %}
+
+    </form>
+  </body>
+</html>
