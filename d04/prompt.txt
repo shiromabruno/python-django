@@ -55,3 +55,19 @@ django-admin startapp ex02
 ################################################################################################################
     EX03
 ################################################################################################################
+
+Referencia no HTML: https://docs.djangoproject.com/en/4.2/ref/templates/language/
+Referencia Django Geral: https://realpython.com/django-templates-tags-filters/
+
+django-admin startapp ex03
+
+Na view.py, colocar
+
+ef index(request):
+    step = 255 / 50
+    context = {
+        "range": [
+            "{:02X}".format(int(i * step)) for i in range(50)
+        ]
+    }
+    return render(request, 'ex03/index.html', context)
