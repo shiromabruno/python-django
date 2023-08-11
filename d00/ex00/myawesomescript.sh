@@ -5,3 +5,6 @@
 #grep -i "location:": O comando "grep" é usado para filtrar as linhas de saída do curl e encontrar aquela que contém a palavra "Location:". A opção -i torna a pesquisa case-insensitive, para que não importe se a palavra está em maiúsculas ou minúsculas.
 #cut -d' ' -f2: O comando "cut" é usado para extrair a segunda coluna de texto da saída do comando anterior, utilizando o espaço como delimitador. Neste caso, a segunda coluna contém a URL de redirecionamento que desejamos obter.          
 curl -sI $1 | grep -i "location: " | cut -d" " -f2
+
+
+#mobile https://github.com/MarkThisHat/dart_mobile
